@@ -25,11 +25,11 @@ class _DicePageState extends State<DicePage> {
   int leftDiceNumber = 1;
   int rightDiceNumber = 2;
 
-  int getInt() {
-    int random1 = Random().nextInt(6)+1;
-    int random2 = Random().nextInt(6)+1;
-    leftDiceNumber = random1;
-    rightDiceNumber = random2;
+  void channgeDiceface() {
+    setState(() {
+      leftDiceNumber = Random().nextInt(6)+1;
+      rightDiceNumber = Random().nextInt(6)+1;
+    });
   }
 
   @override
@@ -41,9 +41,7 @@ class _DicePageState extends State<DicePage> {
             child:
             FlatButton(
                 onPressed: (){
-                  setState(() {
-                    getInt();
-                  });
+                    channgeDiceface();
                   },
                 child: Image.asset('images/dice$leftDiceNumber.png')
             ),
@@ -52,9 +50,7 @@ class _DicePageState extends State<DicePage> {
             child:
             FlatButton(
                 onPressed: (){
-                  setState(() {
-                    getInt();
-                  });
+                  channgeDiceface();
                   },
                 child: Image.asset('images/dice$rightDiceNumber.png')
             ),
